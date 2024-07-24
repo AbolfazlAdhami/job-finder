@@ -4,5 +4,5 @@ import useSWR from "swr";
 const useFetch = () => {
   const { data, isLoading, error } = useSWR("/api");
 
-  return {};
+  return { isLoading, data, error };
 };

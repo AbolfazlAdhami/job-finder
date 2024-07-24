@@ -22,6 +22,7 @@ export default function RootLayout() {
           headerShadowVisible: false,
           headerStyle: { backgroundColor: COLORS.lightWhite },
         }}
+        initialRouteName="index"
       >
         <Stack.Screen
           name="index"

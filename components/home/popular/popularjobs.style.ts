@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 import { FONT, SIZES, COLORS } from "../../../constants";
 
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     marginTop: SIZES.xLarge,
   },
   header: {
-    flexDirection: "row",
+    flexDirection: Platform.OS == "android" ? "row-reverse" : "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   headerBtn: {
     fontSize: SIZES.medium,
     fontFamily: FONT.medium,
-    color: COLORS.gray,
+    color: COLORS.tertiary,
   },
   cardsContainer: {
     marginTop: SIZES.medium,

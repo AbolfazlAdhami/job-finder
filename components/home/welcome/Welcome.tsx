@@ -5,11 +5,13 @@ import {
   TextInput,
   FlatList,
   TouchableOpacity,
+  Image,
+  Pressable,
 } from "react-native";
 
 import styles from "./welcome.style";
 import { useRouter } from "expo-router";
-import { SIZES } from "@/constants";
+import { icons, SIZES } from "@/constants";
 
 const jobTypes = ["Full-time", "Part-time", "Contractor"];
 
@@ -31,7 +33,7 @@ const Welcome = ({
       style={styles.tab(activeJobType, title)}
       onPress={() => {
         setActiveJobType(title);
-        // router.push(`/search/${title}`);
+        router.push(`/search/${title}`);
       }}
     >
       <Text style={styles.tabText(activeJobType, title)}>{title}</Text>
@@ -53,6 +55,13 @@ const Welcome = ({
             onChange={(text) => setSearchTerm(text)}
           />
         </View>
+        <Pressable onPress={handleClick} style={styles.searchBtn}>
+          <Image
+            style={styles.searchBtnImage}
+            resizeMode="contain"
+            source={icons.search}
+          />
+        </Pressable>
       </View>
       <View style={styles.tabsContainer}>
         <FlatList
