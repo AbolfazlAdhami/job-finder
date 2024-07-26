@@ -1,4 +1,4 @@
-import { StyleProp, StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 import { COLORS, FONT, SIZES } from "../../../constants";
 
@@ -18,11 +18,12 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   searchContainer: {
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
-    flexDirection: "row",
+    flexDirection: Platform.OS == "android" ? "row-reverse" : "row",
     marginTop: SIZES.large,
     height: 50,
+    gap: SIZES.small,
   },
   searchWrapper: {
     flex: 1,

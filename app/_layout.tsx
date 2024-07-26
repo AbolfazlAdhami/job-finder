@@ -28,13 +28,7 @@ export default function RootLayout() {
           name="index"
           options={{
             title: "",
-            headerLeft: () => (
-              <ScreenHeaderBtn
-                iconUrl={icons.menu}
-                dimension="60%"
-                handlePress={() => console.log(123)}
-              />
-            ),
+            headerLeft: () => <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" handlePress={() => console.log(123)} />,
           }}
         />
       </Stack>

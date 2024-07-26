@@ -15,12 +15,8 @@ const ScreenHeaderBtn = ({
   handlePress,
 }: ScreenBtnPropsType) => {
   return (
-    <TouchableOpacity style={styles.btnContainer}>
-      <Image
-        source={iconUrl}
-        style={styles.btnImg(dimension)}
-        resizeMode="cover"
-      />
+    <TouchableOpacity style={styles.btnContainer} onPress={handlePress}>
+      <Image source={iconUrl} style={styles.btnImg(dimension)} resizeMode="cover" />
     </TouchableOpacity>
   );
 };

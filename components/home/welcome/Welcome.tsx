@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  Pressable,
-} from "react-native";
+import { View, Text, TextInput, FlatList, TouchableOpacity, Image, Pressable, Platform } from "react-native";
 
 import styles from "./welcome.style";
 import { useRouter } from "expo-router";
@@ -21,11 +13,7 @@ type WellcomePropsType = {
   handleClick: Function;
 };
 
-const Welcome = ({
-  searchTerm,
-  setSearchTerm,
-  handleClick,
-}: WellcomePropsType) => {
+const Welcome = ({ searchTerm, setSearchTerm, handleClick }: WellcomePropsType) => {
   const router = useRouter();
   const [activeJobType, setActiveJobType] = useState("Full-time");
   const JobBox = ({ title }: { title: string }) => (
@@ -48,25 +36,19 @@ const Welcome = ({
       </View>
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
-          <TextInput
-            placeholder="What are you looking for?"
-            style={styles.searchInput}
-            value={searchTerm}
-            onChange={(text) => setSearchTerm(text)}
-          />
+          <TextInput placeholder="What are you looking for?" style={styles.searchInput} value={searchTerm} onChange={(text) => setSearchTerm(text)} />
         </View>
         <Pressable onPress={handleClick} style={styles.searchBtn}>
-          <Image
-            style={styles.searchBtnImage}
-            resizeMode="contain"
-            source={icons.search}
-          />
+          <Image style={styles.searchBtnImage} resizeMode="contain" source={icons.search} />
         </Pressable>
       </View>
       <View style={styles.tabsContainer}>
         <FlatList
           data={jobTypes}
-          contentContainerStyle={{ columnGap: SIZES.small }}
+          contentContainerStyle={{
+            columnGap: SIZES.small,
+            flexDirection: Platform.OS == "android" ? "row-reverse" : "row",
+          }}
           keyExtractor={(item) => item}
           horizontal
           renderItem={({ item }) => <JobBox title={item} />}

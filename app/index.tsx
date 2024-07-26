@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import { COLORS, SIZES } from "@/constants";
 import { Nearbyjobs, Popularjobs, Welcome } from "@/components";
+import { StatusBar } from "expo-status-bar";
 
 const Home = () => {
   const router = useRouter();
@@ -13,15 +14,10 @@ const Home = () => {
   };
   return (
     <SafeAreaView style={style.container}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={style.scrollContainer}
-      >
-        <Welcome
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          handleClick={handleSearch}
-        />
+      <StatusBar style="light" />
+
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={style.scrollContainer}>
+        <Welcome searchTerm={searchTerm} setSearchTerm={setSearchTerm} handleClick={handleSearch} />
         <Popularjobs />
         <Nearbyjobs />
       </ScrollView>

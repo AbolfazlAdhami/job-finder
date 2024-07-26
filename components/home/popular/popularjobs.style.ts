@@ -4,7 +4,7 @@ import { FONT, SIZES, COLORS } from "../../../constants";
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: SIZES.xLarge,
+    marginVertical: SIZES.xxLarge,
   },
   header: {
     flexDirection: Platform.OS == "android" ? "row-reverse" : "row",
