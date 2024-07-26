@@ -17,7 +17,7 @@ const Popularjobs = () => {
     push(`/job-details/${item.job_id}`);
     setSelectedJob(item.job_id);
   };
-  console.log(error, "[errore]", data, isLoading);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
