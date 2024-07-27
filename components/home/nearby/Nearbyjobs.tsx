@@ -8,7 +8,7 @@ import NearbyJobCard from "@/components/common/cards/nearby/NearbyJobCard";
 
 const Nearbyjobs = () => {
   const { data, isLoading, error } = useFetch("search", { query: "React Native developer", num_pages: "1" });
-
+  console.log(error);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -23,7 +23,12 @@ const Nearbyjobs = () => {
         ) : error ? (
           <Text style={{ textAlign: "center" }}>Opps!! Something went wrong Check</Text>
         ) : (
-          <FlatList data={data} keyExtractor={(item) => item.job_id} renderItem={({ item }) => <NearbyJobCard job={item} />} />
+          <FlatList
+            data={data}
+            keyExtractor={(item) => item.job_id}
+            renderItem={({ item }) => <NearbyJobCard job={item} />}
+            contentContainerStyle={{ gap: 10 }}
+          />
         )}
       </View>
     </View>

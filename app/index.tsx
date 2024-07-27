@@ -15,8 +15,7 @@ const Home = () => {
   return (
     <SafeAreaView style={style.container}>
       <StatusBar style="light" />
-
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={style.scrollContainer}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={style.scrollContainer} scrollEnabled>
         <Welcome searchTerm={searchTerm} setSearchTerm={setSearchTerm} handleClick={handleSearch} />
         <Popularjobs />
         <Nearbyjobs />
@@ -29,8 +28,9 @@ export default Home;
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: COLORS.lightWhite,
+    paddingBottom: SIZES.medium,
+    flex: 1,
   },
-  scrollContainer: { flex: 1, padding: SIZES.medium },
+  scrollContainer: { padding: SIZES.medium, paddingBottom: SIZES.medium, overflow: "scroll" },
 });

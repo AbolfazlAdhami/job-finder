@@ -6,7 +6,7 @@ import { checkImageURL } from "@/utils";
 import { router } from "expo-router";
 
 const NearbyJobCard = ({ job }: any) => {
-const handleNavigate = () => router.push(`/job-details/${{job.job_id}}`);
+const handleNavigate = () => router.push(`/job-details/${job.job_id}`);
 
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigate}>
