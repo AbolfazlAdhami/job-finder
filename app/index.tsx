@@ -10,7 +10,9 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const handleSearch = () => {
-    router.push(`/search/${searchTerm}`);
+    if (searchTerm.trim() !== "") {
+      router.push(`/search/${searchTerm}`);
+    }
   };
   return (
     <SafeAreaView style={style.container}>

@@ -1,14 +1,6 @@
-import axios from "axios";
+import { axiosConfig } from "@/utils";
 import React, { useState, useEffect } from "react";
 import useSWR from "swr";
-
-const axiosConfig = axios.create({
-  baseURL: "https://jsearch.p.rapidapi.com/",
-  headers: {
-    "x-rapidapi-key": "5365562dc8msh06f2cc3162c0280p1fdfe0jsn6f7d79da7344",
-    "x-rapidapi-host": "jsearch.p.rapidapi.com",
-  },
-});
 
 const fetcher = (endpoint: string, query: object) => axiosConfig.get(endpoint, { params: query }).then((res) => res.data.data);
 

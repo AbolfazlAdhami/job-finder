@@ -36,7 +36,12 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }: WellcomePropsType) 
       </View>
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
-          <TextInput placeholder="What are you looking for?" style={styles.searchInput} value={searchTerm} onChange={(text) => setSearchTerm(text)} />
+          <TextInput
+            placeholder="What are you looking for?"
+            style={styles.searchInput}
+            value={searchTerm}
+            onChangeText={(text) => setSearchTerm(text)}
+          />
         </View>
         <Pressable onPress={handleClick} style={styles.searchBtn}>
           <Image style={styles.searchBtnImage} resizeMode="contain" source={icons.search} />

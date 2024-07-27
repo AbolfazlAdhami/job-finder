@@ -28,6 +28,7 @@ const Nearbyjobs = () => {
             keyExtractor={(item) => item.job_id}
             renderItem={({ item }) => <NearbyJobCard job={item} />}
             contentContainerStyle={{ gap: 10 }}
+            ListEmptyComponent={null}
           />
         )}
       </View>
