@@ -1,4 +1,4 @@
-import { ActivityIndicator, FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { COLORS, icons, SIZES } from "@/constants";
@@ -37,6 +37,16 @@ export default function Search() {
     }
   };
 
+  const handlePagination = (direction: any) => {
+    if (direction === "left" && page > 1) {
+      setPage(page - 1);
+      handleSearch();
+    } else if (direction === "right") {
+      setPage(page + 1);
+      handleSearch();
+    }
+  };
+
   useEffect(() => {
     handleSearch();
   }, []);
@@ -66,6 +76,19 @@ export default function Search() {
               {searchLoader ? <ActivityIndicator /> : searchError && <Text style={{ textAlign: "center" }}>Opps!! Something went wrong Check</Text>}
             </View>
           </>
+        )}
+        ListFooterComponent={() => (
+          <View style={styles.footerContainer}>
+            <TouchableOpacity style={styles.paginationButton} onPress={() => handlePagination("left")}>
+              <Image source={icons.chevronLeft} style={styles.paginationImage} resizeMode="contain" />
+            </TouchableOpacity>
+            <View style={styles.paginationTextBox}>
+              <Text style={styles.paginationText}>{page}</Text>
+            </View>
+            <TouchableOpacity style={styles.paginationButton} onPress={() => handlePagination("right")}>
+              <Image source={icons.chevronRight} style={styles.paginationImage} resizeMode="contain" />
+            </TouchableOpacity>
+          </View>
         )}
       />
     </SafeAreaView>
