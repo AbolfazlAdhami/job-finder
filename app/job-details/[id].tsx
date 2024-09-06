@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { View, Text, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl, Share } from "react-native";
 
 import { COLORS, icons, SIZES } from "../../constants";
@@ -18,7 +18,6 @@ const JobDetails = () => {
   const { data, isLoading, error } = useFetch("job-details", {
     job_id: id,
   });
-  console.log(data, isLoading, error);
 
   const shareLinkHandler = async () => {
     try {
@@ -27,7 +26,7 @@ const JobDetails = () => {
         url: data[0]?.job_google_link ?? "https://careers.google.com/jobs/results/",
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
   const onRefresh = () => {};

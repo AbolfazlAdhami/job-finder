@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     marginVertical: SIZES.xxLarge,
   },
   header: {
-    flexDirection: Platform.OS == "android" ? "row-reverse" : "row",
+    flexDirection: Platform.OS === "android" ? "row-reverse" : "row",
     justifyContent: "space-between",
     alignItems: "center",
   },

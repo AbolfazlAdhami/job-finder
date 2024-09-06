@@ -1,5 +1,5 @@
+import { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useEffect, useState } from "react";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { COLORS, icons, SIZES } from "@/constants";
 import { NearbyJobCard, ScreenHeaderBtn } from "@/components";
@@ -27,10 +27,9 @@ export default function Search() {
       });
       if (res.status === 200) {
         setSearchResult(() => [...res.data.data]);
-        console.log(res.data.data, "{res}");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setSearchError(error);
     } finally {
       setSearchLoader(false);
@@ -49,7 +48,7 @@ export default function Search() {
 
   useEffect(() => {
     handleSearch();
-  }, []);
+  }, [handleSearch]);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <Stack.Screen
@@ -77,19 +76,22 @@ export default function Search() {
             </View>
           </>
         )}
-        ListFooterComponent={() => (
-          <View style={styles.footerContainer}>
-            <TouchableOpacity style={styles.paginationButton} onPress={() => handlePagination("left")}>
-              <Image source={icons.chevronLeft} style={styles.paginationImage} resizeMode="contain" />
-            </TouchableOpacity>
-            <View style={styles.paginationTextBox}>
-              <Text style={styles.paginationText}>{page}</Text>
+        ListFooterComponent={() => {
+          if (searchLoader) return null;
+          return (
+            <View style={styles.footerContainer}>
+              <TouchableOpacity style={styles.paginationButton} onPress={() => handlePagination("left")}>
+                <Image source={icons.chevronLeft} style={styles.paginationImage} resizeMode="contain" />
+              </TouchableOpacity>
+              <View style={styles.paginationTextBox}>
+                <Text style={styles.paginationText}>{page}</Text>
+              </View>
+              <TouchableOpacity style={styles.paginationButton} onPress={() => handlePagination("right")}>
+                <Image source={icons.chevronRight} style={styles.paginationImage} resizeMode="contain" />
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.paginationButton} onPress={() => handlePagination("right")}>
-              <Image source={icons.chevronRight} style={styles.paginationImage} resizeMode="contain" />
-            </TouchableOpacity>
-          </View>
-        )}
+          );
+        }}
       />
     </SafeAreaView>
   );

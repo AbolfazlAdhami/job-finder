@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     justifyContent: "space-around",
     alignItems: "center",
-    flexDirection: Platform.OS == "android" ? "row-reverse" : "row",
+    flexDirection: Platform.OS === "android" ? "row-reverse" : "row",
     marginTop: SIZES.large,
     height: 50,
     gap: SIZES.small,

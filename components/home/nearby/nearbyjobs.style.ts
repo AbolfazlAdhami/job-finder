@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     marginTop: SIZES.xLarge,
   },
   header: {
-    flexDirection: Platform.OS == "android" ? "row-reverse" : "row",
+    flexDirection: Platform.OS === "android" ? "row-reverse" : "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: SIZES.small,

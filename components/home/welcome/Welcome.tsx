@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { View, Text, TextInput, FlatList, TouchableOpacity, Image, Pressable, Platform } from "react-native";
 
 import styles from "./welcome.style";
@@ -52,7 +52,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }: WellcomePropsType) 
           data={jobTypes}
           contentContainerStyle={{
             columnGap: SIZES.small,
-            flexDirection: Platform.OS == "android" ? "row-reverse" : "row",
+            flexDirection: Platform.OS === "android" ? "row-reverse" : "row",
           }}
           keyExtractor={(item) => item}
           horizontal

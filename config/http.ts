@@ -1,4 +1,4 @@
-const baseUrl = "https://jsearch.p.rapidapi.com";
+export const baseUrl = "https://jsearch.p.rapidapi.com";
 
 export const options = {
   headers: {
@@ -6,5 +6,3 @@ export const options = {
     "x-rapidapi-host": "jsearch.p.rapidapi.com",
   },
 };
-
-// const fetcher=
